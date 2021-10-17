@@ -31,20 +31,26 @@ public class ConfirmTransaction extends AppCompatActivity {
                 startActivity(new Intent(ConfirmTransaction.this, MainActivity.class));
             }
         });
+        Bundle extras = getIntent().getExtras();
+
         btnConfirm = findViewById(R.id.button2);
         btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(ConfirmTransaction.this, TransferStuff.class));
+                Intent i = new Intent(ConfirmTransaction.this, TransferStuff.class);
+                i.putExtra("AccId",extras.getString("AccName"));
+                i.putExtra("Money",extras.getString("Money"));
+                i.putExtra("AccName",extras.getString("AccId"));
+                i.putExtra("network",extras.getString("network"));
+                startActivity(i);
             }
         });
 
-        Bundle extras = getIntent().getExtras();
         if (extras != null) {
             String accName = extras.getString("AccName");
             String money = extras.getString("Money");
             String accID = extras.getString("AccId");
-
+            String networkInfo = extras.getString("network");
             String rands = ""+Integer.parseInt(money)/100;
             int centsI = Integer.parseInt(money)%100;
             String cents = String.format("%02d",centsI);

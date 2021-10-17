@@ -11,7 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TapTransfer">
-        <activity android:name=".TransferStuff"></activity>
+        <activity android:name=".TransferSuccess"></activity>
+        <activity android:name=".SetPriceApplication" />
+        <activity android:name=".MakeQrCode" />
+        <activity android:name=".TransferStuff" />
         <activity android:name=".ConfirmTransaction" />
         <activity android:name=".ScanBarCodeActivity" />
         <activity android:name=".MainActivity">

@@ -30,7 +30,6 @@ public class ScanBarCodeActivity extends AppCompatActivity {
     private BarcodeDetector barcodeDetector;
     private CameraSource cameraSource;
     private static final int REQUEST_CAMERA_PERMISSION = 201;
-    Button btnAction;
     String intentData = "";
 
     @Override
@@ -43,15 +42,6 @@ public class ScanBarCodeActivity extends AppCompatActivity {
     private void initViews() {
         txtBarcodeValue = findViewById(R.id.txtBarcodeValue);
         surfaceView = findViewById(R.id.surfaceView);
-        btnAction = findViewById(R.id.btnAction);
-        btnAction.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (intentData.length() > 0) {
-                    startActivity(new Intent(Intent.ACTION_VIEW , Uri.parse(intentData)));
-                }
-            }
-        });
     }
 
     private void initialiseDetectorsAndSources() {
@@ -116,6 +106,8 @@ public class ScanBarCodeActivity extends AppCompatActivity {
                             i.putExtra("AccId",d[0]);
                             i.putExtra("Money",d[1]);
                             i.putExtra("AccName",d[2]);
+                            i.putExtra("network",d[3]);
+
                             //Toast.makeText(getApplicationContext() , "dgkjladfsnblfdkjgadfjgkj stopped" , Toast.LENGTH_SHORT).show();
                             startActivity(i);
                         }
